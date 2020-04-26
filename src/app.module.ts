@@ -1,9 +1,9 @@
-import { AccountsModule } from './Accounts/accounts.module';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
-import { join } from 'path';
-import { AuthorsModule } from './Authors/authors.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { join } from 'path';
+import { AccountsModule } from './Accounts/accounts.module';
+import { AuthorsModule } from './Authors/authors.module';
 
 @Module({
   imports: [

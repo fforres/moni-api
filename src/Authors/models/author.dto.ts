@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ObjectType } from '@nestjs/graphql';
 import { BaseDTO } from '../../Node/base.dto';
 // import { Post } from './post';
 
@@ -10,3 +10,4 @@ export class Author extends BaseDTO {
   lastName?: string;
   // posts: Post[];
 }
+ 

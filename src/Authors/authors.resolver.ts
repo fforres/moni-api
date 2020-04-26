@@ -1,23 +1,14 @@
-import {
-  Args,
-  Mutation,
-  Query,
-  Resolver,
-  ResolveField,
-  Subscription,
-  Int,
-  ID,
-} from '@nestjs/graphql';
-import { Author } from './models/author.dto';
+import { Args, ID, Query, Resolver } from '@nestjs/graphql';
 import { AuthorsService } from './authors.service';
+import { Author } from './models/author.dto';
 
-@Resolver(of => Author)
+@Resolver(_of => Author)
 export class AuthorsResolver {
   constructor(
     private authorsService: AuthorsService, // private postsService: PostsService,
   ) {}
 
-  @Query(returns => Author)
+  @Query(_returns => Author)
   async author(@Args('id', { type: () => ID }) id: string) {
     return this.authorsService.findOneById(id);
   }

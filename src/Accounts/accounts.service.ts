@@ -5,9 +5,9 @@ import { Account } from './accounts.dto';
 import { AccountsEntity } from './accounts.entity';
 import {
   CreateAccountInput,
-  UpdateAccountInput,
   RemoveAccountInput,
   UnremoveAccountInput,
+  UpdateAccountInput,
 } from './accounts.inputs';
 
 @Injectable()
@@ -22,7 +22,7 @@ export class AccountsService {
   }
 
   async createAccount(data: CreateAccountInput): Promise<Account> {
-    let account = new AccountsEntity();
+    const account = new AccountsEntity();
     account.email = data.email;
     account.createdBy = data.email;
     account.lastChangedBy = data.email;
@@ -58,7 +58,7 @@ export class AccountsService {
   }
 
   async unremoveAccount(data: UnremoveAccountInput): Promise<Account> {
-    let account = new AccountsEntity();
+    const account = new AccountsEntity();
     account.id = data.id;
     // const account = await this.AccountRepository.(data.id);
     const recover = await this.AccountRepository.recover(account);

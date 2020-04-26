@@ -1,20 +1,21 @@
-import { Mutation, Resolver, Args, Query } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Account } from './accounts.dto';
-import { AccountsService } from './accounts.service';
 import {
   CreateAccountInput,
-  UpdateAccountInput,
   RemoveAccountInput,
   UnremoveAccountInput,
+  UpdateAccountInput,
 } from './accounts.inputs';
+import { AccountsService } from './accounts.service';
 
-@Resolver(of => Account)
+@Resolver(_of => Account)
 export class AccountsResolver {
   constructor(
-    private accountsService: AccountsService, // private postsService: PostsService,
+    // private postsService: PostsService,
+    private accountsService: AccountsService,
   ) {}
 
-  @Query(returns => Account)
+  @Query(_returns => Account)
   async account(
     @Args('id', { type: () => String })
     id: string,
@@ -24,7 +25,7 @@ export class AccountsResolver {
     }
   }
 
-  @Mutation(returns => Account)
+  @Mutation(_returns => Account)
   async createAccount(
     @Args('data')
     data: CreateAccountInput,
@@ -32,7 +33,7 @@ export class AccountsResolver {
     return this.accountsService.createAccount(data);
   }
 
-  @Mutation(returns => Account)
+  @Mutation(_returns => Account)
   async updateAccount(
     @Args('data')
     data: UpdateAccountInput,
@@ -40,14 +41,15 @@ export class AccountsResolver {
     return this.accountsService.updateAccount(data);
   }
 
-  @Mutation(returns => Account)
+  @Mutation(_returns => Account)
   async removeAccount(
     @Args('data')
     data: RemoveAccountInput,
   ) {
     return this.accountsService.removeAccount(data);
   }
-  @Mutation(returns => Account)
+
+  @Mutation(_returns => Account)
   async unremoveAccount(
     @Args('data')
     data: UnremoveAccountInput,

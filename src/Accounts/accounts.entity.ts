@@ -1,4 +1,4 @@
-import { Entity, Column } from 'typeorm';
+import { Column, Entity } from 'typeorm';
 import { BaseEntity } from '../Node/base.entity';
 import { AccountStatus } from './accounts.dto';
 

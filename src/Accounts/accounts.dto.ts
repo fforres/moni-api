@@ -1,4 +1,4 @@
-import { Field, ObjectType, registerEnumType, ID } from '@nestjs/graphql';
+import { Field, ObjectType, registerEnumType } from '@nestjs/graphql';
 import { BaseDTO } from '../Node/base.dto';
 
 export enum AccountStatus {
@@ -21,6 +21,6 @@ export class Account extends BaseDTO {
   @Field({ nullable: true })
   username: string;
 
-  @Field(type => AccountStatus)
+  @Field(_type => AccountStatus)
   status: string;
 }

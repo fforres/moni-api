@@ -1,9 +1,9 @@
 import {
-  PrimaryGeneratedColumn,
   Column,
-  UpdateDateColumn,
   CreateDateColumn,
   DeleteDateColumn,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 export abstract class BaseEntity {

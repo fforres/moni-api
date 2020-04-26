@@ -25,7 +25,7 @@ export class AuthorsService {
   //   return [] as Recipe[];
   // }
 
-  async remove(id: string): Promise<boolean> {
+  async remove(_id: string): Promise<boolean> {
     return true;
   }
 }
