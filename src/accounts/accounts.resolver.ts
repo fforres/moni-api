@@ -1,6 +1,7 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Account } from './accounts.dto';
 import {
+  ActivateAccountInput,
   CreateAccountInput,
   RemoveAccountInput,
   UnremoveAccountInput,
@@ -39,6 +40,14 @@ export class AccountsResolver {
     data: UpdateAccountInput,
   ) {
     return this.accountsService.updateAccount(data);
+  }
+
+  @Mutation(_returns => Account)
+  async activateAccount(
+    @Args('data')
+    data: ActivateAccountInput,
+  ) {
+    // return this.accountsService.activateAccount(data);
   }
 
   @Mutation(_returns => Account)

@@ -3,7 +3,7 @@ import {
   GraphQLSchemaBuilderModule,
   GraphQLSchemaFactory,
 } from '@nestjs/graphql';
-import { AuthorsResolver } from './Authors/authors.resolver';
+import { AuthorsResolver } from './authors/authors.resolver';
 
 async function generateSchema() {
   const app = await NestFactory.create(GraphQLSchemaBuilderModule);

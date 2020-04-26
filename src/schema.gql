@@ -31,6 +31,7 @@ type Query {
 type Mutation {
   createAccount(data: CreateAccountInput!): Account!
   updateAccount(data: UpdateAccountInput!): Account!
+  activateAccount(data: ActivateAccountInput!): Account!
   removeAccount(data: RemoveAccountInput!): Account!
   unremoveAccount(data: UnremoveAccountInput!): Account!
 }
@@ -43,6 +44,10 @@ input UpdateAccountInput {
   id: String!
   email: String
   username: String
+}
+
+input ActivateAccountInput {
+  activationKey: String!
 }
 
 input RemoveAccountInput {

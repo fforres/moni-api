@@ -2,8 +2,9 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
-import { AccountsModule } from './Accounts/accounts.module';
-import { AuthorsModule } from './Authors/authors.module';
+import { AccountActivationModule } from './account-activation/account-activation.module';
+import { AccountsModule } from './accounts/accounts.module';
+import { AuthorsModule } from './authors/authors.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { AuthorsModule } from './Authors/authors.module';
     }),
     AccountsModule,
     AuthorsModule,
+    AccountActivationModule,
   ],
 })
 export class AppModule {}

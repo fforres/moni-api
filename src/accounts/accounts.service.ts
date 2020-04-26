@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import * as hyperid from 'hyperid';
 import { Repository } from 'typeorm';
 import { Account } from './accounts.dto';
 import { AccountsEntity } from './accounts.entity';
@@ -9,6 +10,7 @@ import {
   UnremoveAccountInput,
   UpdateAccountInput,
 } from './accounts.inputs';
+const instance = hyperid({ urlSafe: true });
 
 @Injectable()
 export class AccountsService {
@@ -26,15 +28,14 @@ export class AccountsService {
     account.email = data.email;
     account.createdBy = data.email;
     account.lastChangedBy = data.email;
-
+    account.lastChangedBy = data.email;
+    account.activationKey = instance();
     const savedAccount = await this.AccountRepository.save(account);
-    // console.log({ savedAccount, Account });
     return savedAccount;
   }
 
   async updateAccount(data: UpdateAccountInput): Promise<Account> {
     const account = await this.AccountRepository.findOneOrFail(data.id);
-    console.log({ account, data });
     if (data.username) {
       account.username = data.username;
     }
@@ -45,7 +46,6 @@ export class AccountsService {
       account.username = data.username;
     }
     account.lastChangedBy = data.id;
-    // // account.status = data.email;
     const savedAccount = await this.AccountRepository.save(account);
     return savedAccount;
   }

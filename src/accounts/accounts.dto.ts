@@ -1,5 +1,5 @@
 import { Field, ObjectType, registerEnumType } from '@nestjs/graphql';
-import { BaseDTO } from '../Node/base.dto';
+import { BaseDTO } from '../node/base.dto';
 
 export enum AccountStatus {
   ACTIVE = 'ACTIVE',

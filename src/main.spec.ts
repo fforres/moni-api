@@ -1,10 +1,10 @@
-import { AuthorsService } from './Authors/authors.service';
 import { INestApplication } from '@nestjs/common';
+import { FastifyAdapter } from '@nestjs/platform-fastify';
 import { Test } from '@nestjs/testing';
 import * as request from 'supertest';
+import { AccountsService } from './accounts/accounts.service';
 import { AppModule } from './app.module';
-import { FastifyAdapter } from '@nestjs/platform-fastify';
-import { AccountsService } from './Accounts/accounts.service';
+import { AuthorsService } from './authors/authors.service';
 
 describe('GraphQL with fastify', () => {
   let app: INestApplication;

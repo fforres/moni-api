@@ -7,6 +7,12 @@ export class CreateAccountInput {
 }
 
 @InputType()
+export class ActivateAccountInput {
+  @Field()
+  activationKey?: string;
+}
+
+@InputType()
 class AccountInputById {
   @Field()
   readonly id: string;
