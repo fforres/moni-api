@@ -5,7 +5,9 @@ import { Field, ID, ObjectType } from '@nestjs/graphql';
 export class Author {
   @Field(type => ID)
   id: string;
+  @Field({ nullable: true })
   firstName?: string;
+  @Field({ nullable: true })
   lastName?: string;
   // posts: Post[];
 }
