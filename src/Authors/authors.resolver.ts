@@ -8,7 +8,7 @@ import {
   Int,
   ID,
 } from '@nestjs/graphql';
-import { Author } from './models/author.model';
+import { Author } from './models/author.dto';
 import { AuthorsService } from './authors.service';
 
 @Resolver(of => Author)

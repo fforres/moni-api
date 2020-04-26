@@ -1,10 +1,9 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { BaseDTO } from '../../Node/base.dto';
 // import { Post } from './post';
 
 @ObjectType()
-export class Author {
-  @Field(type => ID)
-  id: string;
+export class Author extends BaseDTO {
   @Field({ nullable: true })
   firstName?: string;
   @Field({ nullable: true })

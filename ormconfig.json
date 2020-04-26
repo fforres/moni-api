@@ -1,0 +1,11 @@
+{
+  "type": "postgres",
+  "host": "otto.db.elephantsql.com",
+  "port": 5432,
+  "username": "vyfentqt",
+  "password": "6PnUiYb0iJC8t3kYA4bD9P7OL5pl0TQO",
+  "database": "vyfentqt",
+  "entities": ["dist/**/*.entity.js"],
+  "synchronize": true,
+  "logging": true
+}

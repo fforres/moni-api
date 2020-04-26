@@ -2,6 +2,21 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Account {
+  id: ID!
+  email: String!
+  username: String
+  status: AccountStatus!
+}
+
+"""The different states an account can be in"""
+enum AccountStatus {
+  ACTIVE
+  INACTIVE
+  DISABLED
+  CREATED
+}
+
 type Author {
   id: ID!
   firstName: String
@@ -9,5 +24,31 @@ type Author {
 }
 
 type Query {
+  account(id: String!): Account!
   author(id: ID!): Author!
+}
+
+type Mutation {
+  createAccount(data: CreateAccountInput!): Account!
+  updateAccount(data: UpdateAccountInput!): Account!
+  removeAccount(data: RemoveAccountInput!): Account!
+  unremoveAccount(data: UnremoveAccountInput!): Account!
+}
+
+input CreateAccountInput {
+  email: String!
+}
+
+input UpdateAccountInput {
+  id: String!
+  email: String
+  username: String
+}
+
+input RemoveAccountInput {
+  id: String!
+}
+
+input UnremoveAccountInput {
+  id: String!
 }

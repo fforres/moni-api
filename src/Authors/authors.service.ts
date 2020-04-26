@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 // import { NewRecipeInput } from './dto/new-recipe.input';
 // import { RecipesArgs } from './dto/recipes.args';
-import { Author } from './models/author.model';
+import { Author } from './models/author.dto';
 
 @Injectable()
 export class AuthorsService {
