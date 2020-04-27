@@ -1,6 +1,6 @@
 import { IsEmail, Length } from 'class-validator';
 import { Column, Entity, JoinColumn, OneToOne } from 'typeorm';
-import { AccountActivationEntity } from '../account-activation//account-activation.entity';
+import { AccountActivationEntity } from '../account-activation/account-activation.entity';
 import { BaseEntity } from '../node/base.entity';
 import { AccountStatus } from './accounts.dto';
 
@@ -20,7 +20,7 @@ export class AccountsEntity extends BaseEntity {
 
   @OneToOne(
     _type => AccountActivationEntity,
-    activation => activation.account,
+    accountActivation => accountActivation.account,
     { cascade: true },
   )
   @JoinColumn()

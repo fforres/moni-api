@@ -1,0 +1,39 @@
+module.exports = {
+  type: 'postgres',
+  host: 'moni-db-felipe-dc0f.aivencloud.com',
+  port: 19799,
+  username: 'avnadmin',
+  password: 'fxcugbtglugpydsa',
+  database: 'defaultdb',
+  // dropSchema: true,
+  entities: ['dist/**/*.entity.js'],
+  synchronize: true,
+  logging: true,
+  ssl: {
+    ca: `-----BEGIN CERTIFICATE-----
+MIIEMTCCApmgAwIBAgIEAQNVKTANBgkqhkiG9w0BAQwFADA6MTgwNgYDVQQDDC8z
+OTZhYTNkOC1iMWY2LTQ2ZTUtYTM4OS0zNzgzOTIxYjcxY2QgUHJvamVjdCBDQTAe
+Fw0yMDA0MjcwNDU4NDJaFw0zMDA0MjUwNDU4NDJaMDoxODA2BgNVBAMMLzM5NmFh
+M2Q4LWIxZjYtNDZlNS1hMzg5LTM3ODM5MjFiNzFjZCBQcm9qZWN0IENBMIIBojAN
+BgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEAtMW/SIkF3gPGR8xSDu65Bj7e3Adj
+95FBwGVJzro7IpAd9Ubc6BBrzZOVgtvuAznwcsNVp97mjukgXTdg5W/mp3c+KRTs
+wrjhv3uUHVjG3JirQjddKuVsvwWz7S4609mFro601+B1pHbxuaC+855+mH8rO1os
+Vp1EszUoULH5eb6iqscr4Dm6cQLTM2Qd8ZEIbuoIqkE6VUgbvvOohy+k2toa52ec
+82L4NPDIRvCwKYc52hX8ZwsBAYmDgP1KWsf/AqxPWmfkRMCTwcVZuU6FhqkGesGY
+4Rdl8JWrR3+L526q4s2gkJ+XTR+lMDILEkVAOheeK/Qe9qQ3S7KAQnSpr8NuEi9S
+h2xNng/SKrxUcPK6DyG4dqEcDUHfCIJ6iO9plU5C8OXnbiwEZwfvqOU+4+9bVd/t
+oNiMXHTVfK3Tux7PjJHIC0VEYjOUeCZASySvGAYrMkCHb/PCQ6rrDMr/SlYSb5Fa
+hW9KZsK6ttIISg2rc5K+mPZ37MtdnEMhl2W5AgMBAAGjPzA9MB0GA1UdDgQWBBQ7
+lBWzxLW7f84hdONgQc28goKeDTAPBgNVHRMECDAGAQH/AgEAMAsGA1UdDwQEAwIB
+BjANBgkqhkiG9w0BAQwFAAOCAYEAUyaf7TjCIgPA9EJdPSMf/Y+NvIrb3WNqR8eq
+RQ+n30BjvkR78n7RrGLlIjTP9Iewtk7Cs6dErSUcA1KcmBW3ek6Pr9bS7RjntcHw
+t45d/kN1H2uA+OTDP+ZVqokdsizMEGhfj+DSLygFfWOf/Pth4S7gJR1YmTw3WI7A
+E6Tg/gnTigPQqWqAnD4VPaOXSq3kWK6wn8k5vBMzeD1ueEt+HSRJfpwrgJyAQ+pm
+CniVOW3+Dws1CNCkwakcAWKeGGX//2nhkfQMVp4L1XhB6NYTrGWIaF7wZ370ZA91
+rIwAK0+n2usP+0a61lCVGJyeHZCzber/TdqY0DAhXON/lLLa6Cl6vGC1O3+txAJ+
+Wt5ge7vyz5AaJx7/qY/WbTT+aZCJgZDAjBsKLqdjZ3UyTs6mY6pBvjYTdfJsdyY1
+36JL3twz6f/jfvqcdOVcr8iX211ytrzH8mbkpbCDcxnPLOFgv8Ol9EOt5KuryDkB
+O2U0h8QRki/5A1oHO4Tb/wCp97CU
+-----END CERTIFICATE-----`,
+  },
+};

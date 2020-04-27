@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
-import { AccountActivationModule } from './account-activation/account-activation.module';
 import { AccountsModule } from './accounts/accounts.module';
+import { AuthenticationModule } from './authentication/authentication.module';
 import { AuthorsModule } from './authors/authors.module';
 
 @Module({
@@ -15,10 +15,11 @@ import { AuthorsModule } from './authors/authors.module';
       debug: true,
       // TODO: Disable playground on prod
       playground: true,
+      context: ({ req }) => ({ req }), // <------ HERE
     }),
+    AuthenticationModule,
     AccountsModule,
     AuthorsModule,
-    AccountActivationModule,
   ],
 })
 export class AppModule {}

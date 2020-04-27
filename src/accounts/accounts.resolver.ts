@@ -1,8 +1,6 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { BaseDTO } from '../node/base.dto';
 import { Account } from './accounts.dto';
 import {
-  ActivateAccountInput,
   CreateAccountInput,
   RemoveAccountInput,
   UnremoveAccountInput,
@@ -12,10 +10,7 @@ import { AccountsService } from './accounts.service';
 
 @Resolver(_of => Account)
 export class AccountsResolver {
-  constructor(
-    // private postsService: PostsService,
-    private accountsService: AccountsService,
-  ) {}
+  constructor(private accountsService: AccountsService) {}
 
   @Query(_returns => Account)
   async account(
@@ -41,18 +36,6 @@ export class AccountsResolver {
     data: UpdateAccountInput,
   ) {
     return this.accountsService.updateAccount(data);
-  }
-
-  @Mutation(_returns => BaseDTO)
-  async activateAccount(
-    @Args('data')
-    data: ActivateAccountInput,
-  ) {
-    await this.accountsService.activateAccount(data);
-    return {
-      ID: 'asd',
-      id: 'we',
-    };
   }
 
   @Mutation(_returns => Account)

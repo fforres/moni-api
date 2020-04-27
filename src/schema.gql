@@ -2,10 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type BaseDTO {
-  id: ID!
-}
-
 type Account {
   id: ID!
   email: String!
@@ -19,6 +15,11 @@ enum AccountStatus {
   INACTIVE
   DISABLED
   CREATED
+}
+
+type AuthenticationTokens {
+  authenticationToken: String!
+  refreshToken: String!
 }
 
 type Author {
@@ -35,9 +36,9 @@ type Query {
 type Mutation {
   createAccount(data: CreateAccountInput!): Account!
   updateAccount(data: UpdateAccountInput!): Account!
-  activateAccount(data: ActivateAccountInput!): BaseDTO!
   removeAccount(data: RemoveAccountInput!): Account!
   unremoveAccount(data: UnremoveAccountInput!): Account!
+  activateAccount(data: ActivateAccountInput!): AuthenticationTokens!
 }
 
 input CreateAccountInput {
@@ -50,14 +51,14 @@ input UpdateAccountInput {
   username: String
 }
 
-input ActivateAccountInput {
-  activationKey: String!
-}
-
 input RemoveAccountInput {
   id: String!
 }
 
 input UnremoveAccountInput {
   id: String!
+}
+
+input ActivateAccountInput {
+  activationKey: String!
 }
