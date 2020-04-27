@@ -1,6 +1,6 @@
 import { Args, ID, Query, Resolver } from '@nestjs/graphql';
+import { Author } from './author.dto';
 import { AuthorsService } from './authors.service';
-import { Author } from './models/author.dto';
 
 @Resolver(_of => Author)
 export class AuthorsResolver {

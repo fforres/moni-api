@@ -13,7 +13,7 @@ export abstract class BaseEntity {
   @CreateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
   createDateTime: Date;
 
-  @Column({ type: 'varchar', length: 300 })
+  @Column({ type: 'varchar', length: 300, nullable: true })
   createdBy: string;
 
   @UpdateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
@@ -22,7 +22,7 @@ export abstract class BaseEntity {
   @DeleteDateColumn({ type: 'timestamptz' })
   inactiveDateTime: Date;
 
-  @Column({ type: 'varchar', length: 300 })
+  @Column({ type: 'varchar', length: 300, nullable: true })
   lastChangedBy: string;
 
   @Column({ type: 'varchar', length: 300, nullable: true })

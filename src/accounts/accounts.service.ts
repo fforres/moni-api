@@ -1,22 +1,28 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { compareAsc } from 'date-fns';
 import * as hyperid from 'hyperid';
 import { Repository } from 'typeorm';
+import { AccountActivationEntity } from '../account-activation/account-activation.entity';
 import { Account } from './accounts.dto';
 import { AccountsEntity } from './accounts.entity';
 import {
+  ActivateAccountInput,
   CreateAccountInput,
   RemoveAccountInput,
   UnremoveAccountInput,
   UpdateAccountInput,
 } from './accounts.inputs';
-const instance = hyperid({ urlSafe: true });
 
 @Injectable()
 export class AccountsService {
   constructor(
     @InjectRepository(AccountsEntity)
     private readonly AccountRepository: Repository<AccountsEntity>,
+    @InjectRepository(AccountActivationEntity)
+    private readonly AccountActivationRepository: Repository<
+      AccountActivationEntity
+    >,
   ) {}
 
   async getById(id: Account['id']): Promise<Account> {
@@ -29,7 +35,13 @@ export class AccountsService {
     account.createdBy = data.email;
     account.lastChangedBy = data.email;
     account.lastChangedBy = data.email;
-    account.activationKey = instance();
+
+    const accountActivation = new AccountActivationEntity();
+    const instance = hyperid({ urlSafe: true });
+    accountActivation.activationKey = instance.uuid;
+    account.createdBy = data.email;
+
+    account.accountActivation = accountActivation;
     const savedAccount = await this.AccountRepository.save(account);
     return savedAccount;
   }
@@ -48,6 +60,22 @@ export class AccountsService {
     account.lastChangedBy = data.id;
     const savedAccount = await this.AccountRepository.save(account);
     return savedAccount;
+  }
+
+  async activateAccount(data: ActivateAccountInput): Promise<Account> {
+    const activationKey = await this.AccountActivationRepository.findOneOrFail({
+      where: {
+        activationKey: data.activationKey,
+      },
+    });
+    const TTL = activationKey.TTL;
+    const nextDay = new Date(activationKey.createDateTime);
+    const isValid = compareAsc(nextDay, TTL);
+    if (isValid) {
+      // Change account type and do login
+    }
+    // do nothing? error?
+    return {} as any;
   }
 
   async removeAccount(data: RemoveAccountInput): Promise<Account> {

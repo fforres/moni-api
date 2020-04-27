@@ -1,5 +1,6 @@
 import { IsEmail, Length } from 'class-validator';
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToOne } from 'typeorm';
+import { AccountActivationEntity } from '../account-activation//account-activation.entity';
 import { BaseEntity } from '../node/base.entity';
 import { AccountStatus } from './accounts.dto';
 
@@ -14,10 +15,14 @@ export class AccountsEntity extends BaseEntity {
   @Length(10, 100)
   username: string;
 
-  @Column('varchar', { length: 500, default: AccountStatus.CREATED })
+  @Column('varchar', { length: 100, default: AccountStatus.CREATED })
   status: AccountStatus;
 
-  @Column('varchar', { length: 500, nullable: true })
-  @Length(10, 100)
-  activationKey: string;
+  @OneToOne(
+    _type => AccountActivationEntity,
+    activation => activation.account,
+    { cascade: true },
+  )
+  @JoinColumn()
+  accountActivation: AccountActivationEntity;
 }
