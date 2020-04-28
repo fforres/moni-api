@@ -5,6 +5,7 @@ import { join } from 'path';
 import { AccountsModule } from './accounts/accounts.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { AuthorsModule } from './authors/authors.module';
+import { MetaModule } from './meta/meta.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { AuthorsModule } from './authors/authors.module';
       playground: true,
       context: ({ req }) => ({ req }), // <------ HERE
     }),
+    MetaModule,
     AuthenticationModule,
     AccountsModule,
     AuthorsModule,

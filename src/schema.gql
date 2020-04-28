@@ -28,9 +28,14 @@ type Author {
   lastName: String
 }
 
+type Meta {
+  version: String!
+}
+
 type Query {
   account(id: String!): Account!
   author(id: ID!): Author!
+  meta: Meta!
 }
 
 type Mutation {
